@@ -1,93 +1,127 @@
 :root {
-    --primary-color: #e63946;
-    --secondary-color: #2a9d8f;
-    --background-color: rgba(255, 255, 255, 0.95);
-    --text-color: #264653;
-    --accent-color: #f4a261;
+    --primary-color: #d42426;
+    --secondary-color: #0c5f1f;
+    --background-color: #f0f0f0;
+    --text-color: #333333;
+    --accent-color: #ffd700;
 }
 
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
-    background: url('https://t3.ftcdn.net/jpg/09/04/81/84/360_F_904818422_2vaAFU5Myxf1yc6WJHkIOvVIzlT5evU1.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
     color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: url('https://images.unsplash.com/photo-1607262807149-dfd4c39320a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
 .container {
-    background-color: var(--background-color);
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    padding: 50px;
-    max-width: 600px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.hero, .form-container {
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    margin-top: 5vh;
-    margin-bottom: 20vh;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero:hover, .form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hero {
+    text-align: left;
 }
 
 h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
     color: var(--primary-color);
-    font-size: 3em;
-    margin-bottom: 20px;
-    font-weight: 600;
-    letter-spacing: -1px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: colorChange 5s infinite alternate;
 }
 
-p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: var(--text-color);
+@keyframes colorChange {
+    0% { color: var(--primary-color); }
+    50% { color: var(--secondary-color); }
+    100% { color: var(--accent-color); }
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
 }
 
 .christmas-tree {
-    font-size: 6em;
-    margin-bottom: 20px;
-    position: relative;
+    font-size: 6rem;
+    margin-bottom: 2rem;
     display: inline-block;
+    animation: bounce 2s ease infinite;
 }
 
-.christmas-tree::after {
-    content: '🎄';
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    animation: twinkle 3s infinite;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
 }
 
-@keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-}
-
-.wishlistButton {
-    font-size: 1em;
+.wishlist-button {
+    font-size: 1rem;
     color: #fff;
     background-color: var(--secondary-color);
-    padding: 15px 30px;
+    padding: 1rem 2rem;
     border-radius: 50px;
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 40px;
+    margin-top: 1rem;
     transition: all 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-.wishlistButton:hover {
-    background-color: #1f7a70;
+.wishlist-button:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.wishlist-button:hover:before {
+    left: 100%;
+}
+
+.wishlist-button:hover {
+    background-color: var(--primary-color);
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -95,60 +129,76 @@ p {
 #wishForm {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    gap: 1.5rem;
 }
 
 #wishForm label {
-    font-size: 1.1em;
-    margin-bottom: 8px;
-    text-align: left;
-    color: var(--text-color);
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
 }
 
 #wishForm input,
 #wishForm textarea {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 0.75rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 1em;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 #wishForm input:focus,
 #wishForm textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
 }
 
 #wishForm button {
     background-color: var(--primary-color);
-    color: white;
+    color: #ffffff;
     border: none;
-    padding: 15px 30px;
-    font-size: 1em;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
+    margin-top: 1rem;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+#wishForm button:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+#wishForm button:hover:before {
+    left: 100%;
 }
 
 #wishForm button:hover {
-    background-color: #c92a36;
+    background-color: var(--secondary-color);
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .snowflake {
-    color: white;
+    color: #fff;
     position: fixed;
     top: -10px;
     z-index: 9999;
@@ -164,16 +214,21 @@ p {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
-        padding: 30px;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .hero {
+        text-align: center;
     }
 
     h1 {
-        font-size: 2.5em;
+        font-size: 2.5rem;
     }
 
     .christmas-tree {
-        font-size: 5em;
+        font-size: 4rem;
     }
 }

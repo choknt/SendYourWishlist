@@ -11,11 +11,11 @@ document.getElementById('wishForm').addEventListener('submit', function(event) {
     })
     .then(response => response.json())
     .then(data => {
-        alert('🎅 Ho ho ho! Your wish has been received at the North Pole! 🎁');
+        alert('🎅 Ho ho ho! Your wish has been securely uploaded to Santa\'s Cloud! 🎁');
         document.getElementById('wishForm').reset();
     })
     .catch(error => {
-        alert('🎄 Oops! The elves are having technical difficulties. Please try again! 🧝');
+        alert('🎄 Oops! Santa\'s servers are experiencing high traffic. Please try again! 🧝');
     });
 });
 
