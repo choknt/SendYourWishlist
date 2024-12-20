@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Merry Christmas</title>
+        <style>
+            body {
+                background: url('https://t3.ftcdn.net/jpg/09/04/81/84/360_F_904818422_2vaAFU5Myxf1yc6WJHkIOvVIzlT5evU1.jpg') no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                padding: 50px;
+                overflow: hidden;
+            }
+            .container {
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                max-width: 600px;
+                margin: auto;
+                position: relative;
+                z-index: 1;
+            }
+            h1 {
+                color: #d32f2f;
+                font-size: 3em;
+            }
+            p {
+                color: #555;
+                font-size: 1.2em;
+            }
+            .christmas-tree {
+                font-size: 5em;
+                color: #388e3c;
+                animation: blink 1s infinite;
+            }
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            .snowflake {
+                color: white;
+                position: fixed;
+                top: -10px;
+                z-index: 9999;
+                user-select: none;
+                pointer-events: none;
+                animation: fall linear infinite;
+            }
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh);
+                }
+            }
+
+            .wishlistButton {
+                font-size: 1em;
+                color: #fff;
+                background-color: #d32f2f;
+                padding: 5px 10px;
+                border-radius: 5px;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 5px;
+                margin-bottom: 20px;
+            }
+            .wishlistButton:hover {
+                background-color: #b71c1c;
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="christmas-tree">🎄</div>
+            <h1>Merry Christmas From IT22!</h1>
+            <p>Wishing you a season of joy and looking forward to continued success in the new year.</p>
+            <a href="/wishlists" class="wishlistButton">See Everyone's Wishlist</a>
+            <form id="wishForm">
+                <label for="name" style="font-size: 1.5em;">Your Name</label>
+                <br>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="wish" style="font-size: 1.5em;">Your Christmas Wish</label>
+                <br>
+                <textarea id="wish" name="wish" rows="4" cols="50" required></textarea>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            <script>
+                document.getElementById('wishForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const wish = document.getElementById('wish').value;
+                    const name = document.getElementById('name').value;
+                    fetch('/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name: name, wishlist: wish })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Wish submitted successfully!');
+                    })
+                    .catch(error => {
+                        alert('Error submitting wish: ' + error.message);
+                    });
+                });
+            </script>
+        </div>
+        <script>
+            function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+        </script>
+    </body>
+</html>
