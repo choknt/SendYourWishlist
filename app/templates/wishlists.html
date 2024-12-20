@@ -3,83 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlists</title>
-    <style>
-        body {
-            background: url('https://t3.ftcdn.net/jpg/08/02/46/18/360_F_802461800_6V5ZdSeH8O2X8Op02kn6oIsBGVti9lnb.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            margin-top: 20px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            background: rgba(0, 0, 0, 0.5);
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        h2 {
-            font-size: 2em;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        small {
-            font-size: 0.8em;
-        }
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            z-index: 9999;
-            user-select: none;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
+    <title>Christmas Wishlists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/wishlists.css') }}">
+    <script src="{{ url_for('static',filename='scripts/wishlists.js') }}" defer></script>
 </head>
 <body>
-    <a href="/" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-size: 1.2em;">Go Back</a>
-    <h1>Wishlists</h1>
-    <ul>
-        {% for wishlist in wishlists %}
-            <li>
-                <h2>{{ wishlist.name }}</h2>
-                <p>{{ wishlist.wishlist }}</p>
-                <small>{{ wishlist.timestamp }}</small>
-            </li>
-        {% endfor %}
-    </ul>
-    <script>
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
-
-        setInterval(createSnowflake, 100);
-    </script>
+    <div class="container">
+        <a href="/" class="back-button">Go Back</a>
+        <h1>IT22 Christmas Wishlists</h1>
+        <ul>
+            {% for wishlist in wishlists %}
+                <li>
+                    <h2>{{ wishlist.name }}</h2>
+                    <p>{{ wishlist.wishlist }}</p>
+                    <small>{{ wishlist.timestamp }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
