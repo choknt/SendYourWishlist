@@ -1,0 +1,179 @@
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #2a9d8f;
+    --background-color: rgba(255, 255, 255, 0.95);
+    --text-color: #264653;
+    --accent-color: #f4a261;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: url('https://t3.ftcdn.net/jpg/09/04/81/84/360_F_904818422_2vaAFU5Myxf1yc6WJHkIOvVIzlT5evU1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--background-color);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    margin-top: 5vh;
+    margin-bottom: 20vh;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.christmas-tree {
+    font-size: 6em;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.christmas-tree::after {
+    content: '🎄';
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.wishlistButton {
+    font-size: 1em;
+    color: #fff;
+    background-color: var(--secondary-color);
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wishlistButton:hover {
+    background-color: #1f7a70;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#wishForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#wishForm label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    text-align: left;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+#wishForm input,
+#wishForm textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#wishForm input:focus,
+#wishForm textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+}
+
+#wishForm button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#wishForm button:hover {
+    background-color: #c92a36;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.snowflake {
+    color: white;
+    position: fixed;
+    top: -10px;
+    z-index: 9999;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .christmas-tree {
+        font-size: 5em;
+    }
+}
