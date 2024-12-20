@@ -139,13 +139,15 @@ h1 {
 
 #wishForm input,
 #wishForm textarea {
-    width: 100%;
+    width: 90%;
     padding: 0.75rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
+    resize: none; /* Prevent resizing */
+    user-select: none; /* Prevent text selection */
 }
 
 #wishForm input:focus,
