@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas from IT22</title>
+    <title>Merry Christmas</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
     <script src="{{ url_for('static',filename='scripts/index.js') }}" defer></script>
@@ -12,17 +12,17 @@
     <div class="container">
         <div class="hero">
             <div class="christmas-tree">🎄</div>
-            <h1>IT22 Christmas Wonderland</h1>
-            <p class="subtitle">Celebrate the magic of technology and the joy of the season with us!</p>
-            <a href="/wishlists" class="wishlist-button">Discover Wishlists</a>
+            <h1>gce Christmas Wonderland</h1>
+            <p class="subtitle">ร่วมเฉลิมฉลองความมหัศจรรย์และความสุขแห่งฤดูกาลไปกับเราและแซนต้าโชค!</p>
+            <a href="/wishlists" class="wishlist-button">ค้นพบรายการความปรารถนา</a>
         </div>
         <div class="form-container">
             <form id="wishForm">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your festive name">
-                <label for="wish">Your Christmas Wish</label>
-                <textarea id="wish" name="wish" rows="4" required placeholder="Share your tech-inspired wish..."></textarea>
-                <button type="submit">Send to Santa's Cloud ☁️</button>
+                <label for="name">ชื่อของคุณ</label>
+                <input type="text" id="name" name="name" required placeholder="กรอกชื่อของคุณแล้วแซนต้าโชคจะจำได้">
+                <label for="wish">คำขอวันคริสต์มาสของคุณ</label>
+                <textarea id="wish" name="wish" rows="4" required placeholder="แบ่งปันคำขอขอบคุณกับแซนต้าโชค..."></textarea>
+                <button type="submit">ส่งคำขอไปยังแซนต้าโชค ☁️</button>
             </form>
         </div>
     </div>
